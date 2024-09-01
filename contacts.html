@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Me</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: #e0f7fa;
+            color: #333;
+        }
+        .container {
+            max-width: 100%;
+            margin: 20px auto;
+            background: #ffffff;
+            border-radius: 12px;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+            overflow: hidden;
+            transition: box-shadow 0.3s ease;
+        }
+        .container:hover {
+            box-shadow: 0 6px 24px rgba(0, 0, 0, 0.2);
+        }
+        .tabs {
+            display: flex;
+            flex-wrap: wrap;
+            cursor: pointer;
+            background: linear-gradient(to right, #4a90e2, #50e3c2);
+            border-bottom: 2px solid #4a90e2;
+            padding: 0;
+            margin: 0;
+        }
+        .tab {
+            flex: 1;
+            padding: 16px;
+            text-align: center;
+            background: #ddd;
+            border: none;
+            border-bottom: 3px solid transparent;
+            transition: background 0.3s ease, color 0.3s ease, border-bottom 0.3s ease;
+            font-weight: bold;
+            cursor: pointer;
+            position: relative;
+        }
+        .tab:hover {
+            background: #e1e1e1;
+        }
+        .tab.active-tab {
+            background: #ffffff;
+            border-bottom: 3px solid #4a90e2;
+            color: #4a90e2;
+            box-shadow: inset 0 -3px 0 #4a90e2;
+        }
+        .tab-content {
+            display: none;
+            padding: 20px;
+            background: #ffffff;
+            border-top: 1px solid #ddd;
+            transition: opacity 0.5s ease, transform 0.5s ease;
+            opacity: 0;
+            transform: translateY(10px);
+        }
+        .tab-content.active-content {
+            display: block;
+            opacity: 1;
+            transform: translateY(0);
+        }
+        h1 {
+            margin-top: 0;
+            color: #4a90e2;
+            font-size: 28px;
+            font-weight: 600;
+            border-bottom: 3px solid #4a90e2;
+            padding-bottom: 10px;
+        }
+        p {
+            line-height: 1.8;
+            font-size: 16px;
+            color: #555;
+        }
+        a {
+            color: #4a90e2;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+        img {
+            display: block;
+            margin: 20px auto;
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        img:hover {
+            transform: scale(1.05);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Медиазапросы для мобильных устройств */
+        @media (max-width: 768px) {
+            .tab {
+                font-size: 14px;
+                padding: 12px;
+            }
+            .tabs {
+                flex-direction: column;
+            }
+            .tab-content {
+                padding: 15px;
+            }
+            h1 {
+                font-size: 24px;
+            }
+            p {
+                font-size: 14px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="tabs">
+            <div class="tab active-tab" onclick="showTab('about')">About Me</div>
+            <div class="tab" onclick="showTab('reason')">Why I Joined the University</div>
+            <div class="tab" onclick="showTab('contact')">Contact</div>
+        </div>
+
+        <div id="about" class="tab-content active-content">
+            <h1>About Me</h1>
+            <p>Hi guys! My name is Asanov Nurgisa. I am 17 years old and I live in the Almaty region, in the village of Zhambyl. I am an applicant to the International Information Technology University. In my free time, I play games and watch movies.</p>
+        </div>
+
+        <div id="reason" class="tab-content">
+            <h1>Why did you go to International Information Technology University?</h1>
+            <p>I decided to enroll in the university to gain in-depth knowledge in the field of information technology and to improve my programming skills. The university offers an excellent opportunity to learn from experienced instructors and to connect with like-minded individuals. I am confident that this will help me achieve my professional goals and become a successful specialist in my field.</p>
+            <img src="ii.jpg" alt="University Image" width="40%">
+            <img src="pr.webp" alt="Programming Image" width="50%">
+        </div>
+
+        <div id="contact" class="tab-content">
+            <h1>Contact</h1>
+            <p>You can reach me via email at: <a href="mailto:nrgisaasanov623@gmail.com">nrgisaasanov623@gmail.com</a> or via WhatsApp at: +7 708 669 8549</p>
+        </div>
+    </div>
+
+    <script>
+        function showTab(tabId) {
+            // Hide all tab contents
+            var tabs = document.querySelectorAll('.tab-content');
+            tabs.forEach(function(tab) {
+                tab.classList.remove('active-content');
+            });
+            
+            // Remove active class from all tabs
+            var tabHeaders = document.querySelectorAll('.tab');
+            tabHeaders.forEach(function(tabHeader) {
+                tabHeader.classList.remove('active-tab');
+            });
+
+            // Show the selected tab
+            document.getElementById(tabId).classList.add('active-content');
+            document.querySelector('.tab[onclick="showTab(\'' + tabId + '\')"]').classList.add('active-tab');
+        }
+    </script>
+</body>
+</html>
